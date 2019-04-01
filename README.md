@@ -1,7 +1,7 @@
-# resourcemanagement.gkb.training-cns-edge
+# cns-edge-master
 
 Docker:
-- To build: "docker build -t resourcemanagement.gkb.training-cns-edge ."
+- To build: "docker build -t cns-edge-master ."
 - To run locally:
   - Either have local mongo database running OR
   - Run clustered in a swarm locally:
