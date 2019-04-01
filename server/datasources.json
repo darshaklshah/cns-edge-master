@@ -1,0 +1,16 @@
+{
+    "db": {
+        "name": "db",
+        "connector": "memory"
+    },
+    "mongodb": {
+      "connector": "mongodb",
+      "url": "${MONGODB_URL}",
+      "host": "localhost",
+      "port": "27017",
+      "database": "coffeemuggers",
+      "password": "",
+      "user": "",
+      "name": "mongodb"
+    }
+}

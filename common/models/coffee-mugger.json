@@ -1,0 +1,27 @@
+{
+  "name": "CoffeeMugger",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "user": {
+      "type": "string",
+      "required": true
+    },
+    "timeOfRequest": {
+      "type": "date",
+      "required": true
+    },
+    "caffeinated": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

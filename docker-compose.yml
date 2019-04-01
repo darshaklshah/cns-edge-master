@@ -1,0 +1,48 @@
+version: "3"
+services:
+  datastorage:
+      image: mongo:latest
+      deploy:
+        restart_policy:
+          condition: on-failure
+        placement:
+          constraints: [node.role == manager]
+      ports:
+        - "27017"
+      networks:
+        backend:
+          aliases:
+            - database
+            - mongo
+  web-api:
+    image: resourcemanagement.gkb.training-cns-edge:latest
+    deploy:
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints: [node.role == worker]
+      resources:
+        limits:
+          cpus: "0.35"
+          memory: 256MB
+    environment:
+      - MONGODB_URL=mongodb://mongo:27017/coffeemuggers
+    ports:
+      - "3000:3000"
+    networks:
+      - frontend
+      - backend
+  visualizer:
+      image: dockersamples/visualizer:stable
+      ports:
+        - "8080:8080"
+      volumes:
+        - "/var/run/docker.sock:/var/run/docker.sock"
+      deploy:
+        placement:
+          constraints: [node.role == manager]
+      networks:
+        - frontend
+networks:
+  frontend:
+  backend:
